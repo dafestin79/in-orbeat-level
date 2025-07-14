@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpnfpft461iwv"]
+
+[ext_resource type="TileSet" uid="uid://bl2o7yp2wf0hx" path="res://Assets/tilemap.tres" id="1_rb4nh"]
+[ext_resource type="Script" uid="uid://dnt3d5g3w41gv" path="res://Scripts/gate.gd" id="1_uu6ux"]
+
+[node name="Gate" type="Node2D"]
+script = ExtResource("1_uu6ux")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 0, 5, 0, 3, 0, 1, 0, 0, 0)
+tile_set = ExtResource("1_rb4nh")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

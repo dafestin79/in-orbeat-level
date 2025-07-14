@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb700uvj1tgp6"]
+
+[ext_resource type="FontFile" uid="uid://ccxgcjdlyno7s" path="res://Assets/PixelOperator8-Bold.ttf" id="1_0yjym"]
+[ext_resource type="Script" path="res://message_box.gd" id="1_1ah4c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqt2i"]
+bg_color = Color(0.100631, 0.0349069, 0.17613, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.260194, 0.127988, 0.412367, 1)
+
+[node name="Message Box" type="CanvasLayer"]
+script = ExtResource("1_1ah4c")
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = -168.0
+offset_right = -101.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aqt2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_0yjym")
+theme_override_font_sizes/font_size = 18
+text = "*"
+
+[node name="message" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_0yjym")
+theme_override_font_sizes/font_size = 18
+text = "Placeholder text! The quick brown fox jumps over the lazy dog hehe welcome to our tutorial sobrang latina golden retriever englishera"
+autowrap_mode = 2
+clip_text = true
+
+[node name="end" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_0yjym")
+theme_override_font_sizes/font_size = 18
+text = "v"

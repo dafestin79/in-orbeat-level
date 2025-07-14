@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=4 uid="uid://bw1n4k65t1ui5"]
+
+[ext_resource type="Script" uid="uid://dm4h877jmwfq2" path="res://Scripts/moving_platform.gd" id="1_mflwr"]
+[ext_resource type="TileSet" uid="uid://bl2o7yp2wf0hx" path="res://Assets/tilemap.tres" id="1_vnxyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwpjx"]
+size = Vector2(95, 5)
+
+[node name="moving_platform" type="AnimatableBody2D"]
+script = ExtResource("1_mflwr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(47.5, 3.5)
+shape = SubResource("RectangleShape2D_mwpjx")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAkAAAABAAAAAAACAAkAAAACAAAAAAACAAkAAAADAAAAAAACAAkAAAAEAAAAAAACAAkAAAAFAAAAAAADAAkAAAA=")
+tile_set = ExtResource("1_vnxyc")

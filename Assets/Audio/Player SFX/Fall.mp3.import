@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dap40ryrneua6"
+path="res://.godot/imported/Fall.mp3-a68793498f5c0a96207546ab8ceb10a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Player SFX/Fall.mp3"
+dest_files=["res://.godot/imported/Fall.mp3-a68793498f5c0a96207546ab8ceb10a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

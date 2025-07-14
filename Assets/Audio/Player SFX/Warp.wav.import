@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btv63gbnxc52a"
+path="res://.godot/imported/Warp.wav-d2528e604983b6ec79a1818376bd6abe.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Player SFX/Warp.wav"
+dest_files=["res://.godot/imported/Warp.wav-d2528e604983b6ec79a1818376bd6abe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

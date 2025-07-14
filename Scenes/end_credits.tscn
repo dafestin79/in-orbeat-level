@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpeq8fpjfv1vh"]
+
+[ext_resource type="Script" uid="uid://kmsrq2uf6lr0" path="res://Scripts/end_credits.gd" id="1_eak08"]
+[ext_resource type="Texture2D" uid="uid://duh7s68g8dijn" path="res://Assets/Background-2.png" id="1_sse1y"]
+[ext_resource type="StyleBox" uid="uid://bsuwj2aky06jb" path="res://Assets/back-button.tres" id="2_dmkgu"]
+[ext_resource type="FontFile" uid="uid://ccxgcjdlyno7s" path="res://Assets/PixelOperator8-Bold.ttf" id="3_v2vq3"]
+
+[sub_resource type="Gradient" id="Gradient_1liaq"]
+offsets = PackedFloat32Array(0.465116, 1)
+colors = PackedColorArray(0, 0, 0, 0.360784, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2b7cd"]
+gradient = SubResource("Gradient_1liaq")
+
+[sub_resource type="Gradient" id="Gradient_k5i05"]
+offsets = PackedFloat32Array(0, 0.189369, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.827451, 1, 1, 1, 1, 1, 0.45098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s3bxg"]
+gradient = SubResource("Gradient_k5i05")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6ytr"]
+lifetime_randomness = 0.48
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+gravity = Vector3(100, 20, 0)
+damping_max = 84.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_s3bxg")
+color_initial_ramp = SubResource("GradientTexture1D_2b7cd")
+
+[sub_resource type="Gradient" id="Gradient_odnh8"]
+offsets = PackedFloat32Array(0, 0.129129, 1)
+colors = PackedColorArray(0.51523, 0.492773, 0.432407, 0.172549, 0.603243, 0.774735, 0.540396, 1, 1, 1, 1, 0.223529)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j20bw"]
+gradient = SubResource("Gradient_odnh8")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5nd4i"]
+line_spacing = 10.0
+font = ExtResource("3_v2vq3")
+font_size = 20
+
+[node name="End Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eak08")
+
+[node name="TitleBg" type="Sprite2D" parent="."]
+position = Vector2(584.963, 334.75)
+scale = Vector2(0.611419, 0.613426)
+texture = ExtResource("1_sse1y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TitleBg"]
+position = Vector2(-1120.28, -382.687)
+scale = Vector2(1.63554, 1.63019)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_p6ytr")
+texture = SubResource("GradientTexture2D_j20bw")
+lifetime = 16.0
+preprocess = 48.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="TitleBg"]
+position = Vector2(-1120.28, -102.687)
+scale = Vector2(1.63554, 1.63019)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_p6ytr")
+texture = SubResource("GradientTexture2D_j20bw")
+lifetime = 16.0
+preprocess = 48.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.5
+offset_top = -318.0
+offset_right = 398.5
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits
+
+Game Created By
+Ian, Thris, and Lay
+
+Special Thanks To
+Sir Butch, Sir DM, and Doc Drei
+
+Made Using Godot
+
+Art Assets Made Using Aseprite
+
+Music: Civil (Explore) by Ben Prunty
+ (Originally from Faster than Light)
+
+Sounds from
+Toby Fox
+Robinson Technologies
+Freesound"
+label_settings = SubResource("LabelSettings_5nd4i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back-button" type="Button" parent="."]
+offset_left = 37.42
+offset_top = 43.325
+offset_right = 144.42
+offset_bottom = 123.325
+theme_override_styles/focus = ExtResource("2_dmkgu")
+theme_override_styles/hover = ExtResource("2_dmkgu")
+theme_override_styles/pressed = ExtResource("2_dmkgu")
+theme_override_styles/normal = ExtResource("2_dmkgu")
+
+[connection signal="pressed" from="back-button" to="." method="_on_backbutton_pressed"]

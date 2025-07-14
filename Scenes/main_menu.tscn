@@ -1,0 +1,185 @@
+[gd_scene load_steps=21 format=3 uid="uid://5gk7oslgl8ts"]
+
+[ext_resource type="Script" uid="uid://2f2qgrsd7dpc" path="res://Scripts/main_menu.gd" id="1_umgk5"]
+[ext_resource type="FontFile" uid="uid://ccxgcjdlyno7s" path="res://Assets/PixelOperator8-Bold.ttf" id="2_jv270"]
+[ext_resource type="Texture2D" uid="uid://duh7s68g8dijn" path="res://Assets/Background-2.png" id="3_b3apx"]
+[ext_resource type="Texture2D" uid="uid://daqt08bl87b64" path="res://Assets/title bg.png" id="3_uqkbj"]
+[ext_resource type="Theme" uid="uid://do86lmib33bjy" path="res://Assets/Button Theme.tres" id="4_1knc7"]
+[ext_resource type="Texture2D" uid="uid://dyl8cd3vvnw6c" path="res://Assets/power-button.png" id="7_ddq4v"]
+[ext_resource type="StyleBox" uid="uid://cqe6nhpsknrvo" path="res://Assets/quit-button.tres" id="8_tcgbi"]
+[ext_resource type="Texture2D" uid="uid://caik1se5nk20q" path="res://Assets/title.png" id="9_jupsl"]
+[ext_resource type="Shader" uid="uid://wqjgt66l3va8" path="res://Assets/Shader/crt.gdshader" id="10_lnj0m"]
+[ext_resource type="Script" uid="uid://cue5qd2wd463x" path="res://Scenes/Title.gd" id="10_shhoc"]
+
+[sub_resource type="Gradient" id="Gradient_ux1a2"]
+offsets = PackedFloat32Array(0, 0.129129, 1)
+colors = PackedColorArray(0.51523, 0.492773, 0.432407, 0.172549, 0.603243, 0.774735, 0.540396, 1, 1, 1, 1, 0.223529)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vtmae"]
+gradient = SubResource("Gradient_ux1a2")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_1kr4x"]
+offsets = PackedFloat32Array(0.465116, 1)
+colors = PackedColorArray(0, 0, 0, 0.360784, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ad8nv"]
+gradient = SubResource("Gradient_1kr4x")
+
+[sub_resource type="Gradient" id="Gradient_eeei7"]
+offsets = PackedFloat32Array(0, 0.189369, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.827451, 1, 1, 1, 1, 1, 0.45098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y0vcu"]
+gradient = SubResource("Gradient_eeei7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qdgk0"]
+lifetime_randomness = 0.48
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+gravity = Vector3(100, 20, 0)
+damping_max = 84.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_y0vcu")
+color_initial_ramp = SubResource("GradientTexture1D_ad8nv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1gjw"]
+texture = ExtResource("7_ddq4v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5iw8"]
+shader = ExtResource("10_lnj0m")
+
+[sub_resource type="QuadMesh" id="QuadMesh_da0va"]
+size = Vector2(1152, 648)
+center_offset = Vector3(576, 324, 0)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_umgk5")
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="TitleBg" type="Sprite2D" parent="TileMap"]
+position = Vector2(584.963, 334.75)
+scale = Vector2(0.611419, 0.613426)
+texture = ExtResource("3_b3apx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TileMap/TitleBg"]
+position = Vector2(-1120.28, -382.687)
+scale = Vector2(1.63554, 1.63019)
+amount = 64
+texture = SubResource("GradientTexture2D_vtmae")
+lifetime = 16.0
+preprocess = 48.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_qdgk0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="TileMap/TitleBg"]
+position = Vector2(-1120.28, -102.687)
+scale = Vector2(1.63554, 1.63019)
+amount = 64
+texture = SubResource("GradientTexture2D_vtmae")
+lifetime = 16.0
+preprocess = 48.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_qdgk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap"]
+modulate = Color(1, 1, 1, 0.427451)
+scale = Vector2(0.613889, 0.613889)
+texture = ExtResource("3_uqkbj")
+centered = false
+
+[node name="buttons-container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.713735
+anchor_right = 0.5
+anchor_bottom = 0.714
+offset_left = -180.0
+offset_top = -121.0
+offset_right = 180.0
+offset_bottom = 121.914
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 36
+metadata/_edit_use_anchors_ = true
+
+[node name="new-game-button" type="Button" parent="buttons-container"]
+layout_mode = 2
+theme = ExtResource("4_1knc7")
+theme_override_colors/font_color = Color(0.874022, 0.883178, 0.980473, 1)
+theme_override_fonts/font = ExtResource("2_jv270")
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "NEW GAME"
+
+[node name="continue-button" type="Button" parent="buttons-container"]
+layout_mode = 2
+theme = ExtResource("4_1knc7")
+theme_override_colors/font_color = Color(0.874022, 0.883178, 0.980473, 1)
+theme_override_fonts/font = ExtResource("2_jv270")
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "CONTINUE"
+
+[node name="tutorial-button" type="Button" parent="buttons-container"]
+layout_mode = 2
+theme = ExtResource("4_1knc7")
+theme_override_colors/font_color = Color(0.874022, 0.883178, 0.980473, 1)
+theme_override_fonts/font = ExtResource("2_jv270")
+theme_override_font_sizes/font_size = 32
+text = "TUTORIAL"
+
+[node name="credits-button" type="Button" parent="buttons-container"]
+layout_mode = 2
+theme = ExtResource("4_1knc7")
+theme_override_colors/font_color = Color(0.874022, 0.883178, 0.980473, 1)
+theme_override_fonts/font = ExtResource("2_jv270")
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+
+[node name="quit-button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1074.0
+offset_top = 573.0
+offset_right = 1144.0
+offset_bottom = 640.0
+theme_override_styles/focus = SubResource("StyleBoxTexture_e1gjw")
+theme_override_styles/hover = ExtResource("8_tcgbi")
+theme_override_styles/pressed = ExtResource("8_tcgbi")
+theme_override_styles/normal = ExtResource("8_tcgbi")
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(580, 175)
+scale = Vector2(0.571, 0.571)
+texture = ExtResource("9_jupsl")
+script = ExtResource("10_shhoc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_v5iw8")
+mesh = SubResource("QuadMesh_da0va")
+
+[connection signal="pressed" from="buttons-container/new-game-button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttons-container/continue-button" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="buttons-container/tutorial-button" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="buttons-container/credits-button" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="quit-button" to="." method="_on_quit_pressed"]

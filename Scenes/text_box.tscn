@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://51wb8xryhyea"]
+
+[ext_resource type="Script" uid="uid://cpt0r0wh3mjru" path="res://Scenes/text_box.gd" id="1_thec2"]
+[ext_resource type="Texture2D" uid="uid://v63e4h3vccgg" path="res://Assets/textbox.png" id="2_2iok0"]
+[ext_resource type="FontFile" uid="uid://ccxgcjdlyno7s" path="res://Assets/PixelOperator8-Bold.ttf" id="3_0b3xo"]
+[ext_resource type="Texture2D" uid="uid://da0qt47o6vvuw" path="res://Assets/Indicator.png" id="3_5oojf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeqnt"]
+atlas = ExtResource("3_5oojf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juws3"]
+atlas = ExtResource("3_5oojf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6pfq"]
+atlas = ExtResource("3_5oojf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2dxt"]
+atlas = ExtResource("3_5oojf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkmdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeqnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juws3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6pfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2dxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="TextBox" type="MarginContainer"]
+offset_right = 48.0
+offset_bottom = 44.0
+script = ExtResource("1_thec2")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_2iok0")
+region_rect = Rect2(0, 0, 33, 33)
+patch_margin_left = 11
+patch_margin_top = 22
+patch_margin_right = 11
+patch_margin_bottom = 22
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.6, 1.6)
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="NinePatchRect/Control"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_dkmdd")
+autoplay = "default"
+frame_progress = 0.832817
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.13824, 0.0360623, 0.166062, 1)
+theme_override_colors/font_shadow_color = Color(0.356863, 0.141176, 0.415686, 0.133333)
+theme_override_fonts/font = ExtResource("3_0b3xo")
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -16.0
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

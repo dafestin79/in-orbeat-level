@@ -1,0 +1,244 @@
+[gd_scene load_steps=33 format=4 uid="uid://dy3val2ccl2qf"]
+
+[ext_resource type="TileSet" uid="uid://bl2o7yp2wf0hx" path="res://Assets/tilemap.tres" id="1_37mvc"]
+[ext_resource type="Texture2D" uid="uid://duh7s68g8dijn" path="res://Assets/Background-2.png" id="2_5lbd2"]
+[ext_resource type="Script" path="res://Scripts/background.gd" id="3_y04tm"]
+[ext_resource type="Texture2D" uid="uid://cu3j8in2e6bqa" path="res://Assets/Background-1.png" id="4_s6olx"]
+[ext_resource type="Texture2D" uid="uid://cbpnhwg48j6ly" path="res://Assets/Background.png" id="5_oxs0y"]
+[ext_resource type="PackedScene" uid="uid://c54iwrw1m1gi" path="res://Scenes/lifeform.tscn" id="6_4ndgs"]
+[ext_resource type="PackedScene" uid="uid://cjyf3dk4bye4q" path="res://Scenes/player.tscn" id="6_pma55"]
+[ext_resource type="PackedScene" uid="uid://ecyf5hd6bip2" path="res://Scenes/onscreen_keyboard.tscn" id="7_gjfwi"]
+[ext_resource type="Shader" path="res://Assets/Shader/crt.gdshader" id="8_ldnas"]
+[ext_resource type="PackedScene" uid="uid://d4ibfvrqimumk" path="res://Scenes/mover.tscn" id="10_2u0h3"]
+
+[sub_resource type="Gradient" id="Gradient_glnde"]
+offsets = PackedFloat32Array(0.465116, 1)
+colors = PackedColorArray(0, 0, 0, 0.360784, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8xr2c"]
+gradient = SubResource("Gradient_glnde")
+
+[sub_resource type="Gradient" id="Gradient_bgvh0"]
+offsets = PackedFloat32Array(0, 0.189369, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.827451, 1, 1, 1, 1, 1, 0.45098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s52nf"]
+gradient = SubResource("Gradient_bgvh0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwu2a"]
+lifetime_randomness = 0.48
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+gravity = Vector3(100, 20, 0)
+damping_max = 84.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_s52nf")
+color_initial_ramp = SubResource("GradientTexture1D_8xr2c")
+
+[sub_resource type="Gradient" id="Gradient_was04"]
+offsets = PackedFloat32Array(0, 0.129129, 1)
+colors = PackedColorArray(0.51523, 0.492773, 0.432407, 0.172549, 0.603243, 0.774735, 0.540396, 1, 1, 1, 1, 0.223529)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_75liy"]
+gradient = SubResource("Gradient_was04")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gem6p"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffix1"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(1920, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqv43"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(3840, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jv6i"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(5760, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rppms"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(7680, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8h0v"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(9600, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt2k1"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(11520, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5tgb"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(13440, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3i6o"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(15360, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuft4"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(17280, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai3tx"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(19200, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmosu"]
+atlas = ExtResource("5_oxs0y")
+region = Rect2(21120, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qej7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gem6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffix1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqv43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jv6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rppms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8h0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt2k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5tgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3i6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuft4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmosu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp43w"]
+shader = ExtResource("8_ldnas")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7fy0k"]
+size = Vector2(1152, 648)
+center_offset = Vector3(576, 324, 0)
+
+[node name="level_tutorial" type="Node2D"]
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="Floors" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAANAB0ABQABAAAAAAAOAB0ABQABAAAAAAAPAB0ABQABAAAAAAAQAB0ABQABAAAAAAARAB0ABQABAAAAAAASAB0ABQABAAAAAAATAB0ABQABAAAAAAAUAB0ABQABAAAAAAAVAB0ABQABAAAAAAAWAB0ABQABAAAAAAAXAB0ABQABAAAAAAAYAB0ABQABAAAAAAAZAB0ABQABAAAAAAAaAB4ABQABAAEAAAAZAB4ABQABAAIAAAAYAB4ABQABAAIAAAAXAB4ABQABAAIAAAAWAB4ABQABAAIAAAAVAB4ABQABAAIAAAAUAB4ABQABAAIAAAATAB4ABQABAAIAAAASAB4ABQABAAIAAAARAB4ABQABAAIAAAAQAB4ABQABAAIAAAAPAB4ABQABAAIAAAAOAB4ABQABAAIAAAANAB4ABQABAAIAAAAaAB0ABQABAAAAAAAbAB0ABQABAAAAAAAbAB4ABQABAAEAAAAcAB0ABQABAAAAAAAcAB4ABQABAAEAAAAdAB0ABQABAAAAAAAdAB4ABQABAAEAAAAeAB0ABQABAAAAAAAeAB4ABQABAAEAAAAfAB0ABQABAAAAAAAfAB4ABQABAAEAAAAgABsABQABAAEAAAAgABwABQABAAIAAAAgAB0ABQABAAEAAAAgAB4ABQABAAEAAAAhAB0ABQABAAEAAAAhAB4ABQABAAEAAAAhABsABQABAAEAAAAhABwABQABAAIAAAAiABsABQABAAEAAAAiABwABQABAAIAAAAiAB0ABQABAAEAAAAiAB4ABQABAAEAAAAiAB8ABQABAAIAAAAhAB8ABQABAAIAAAAgAB8ABQABAAIAAAAfAB8ABQABAAIAAAAeAB8ABQABAAIAAAAdAB8ABQABAAIAAAAcAB8ABQABAAIAAAAbAB8ABQABAAIAAAAaAB8ABQABAAIAAAAZAB8ABQABAAIAAAAYAB8ABQABAAIAAAAXAB8ABQABAAIAAAAWAB8ABQABAAIAAAAVAB8ABQABAAIAAAAUAB8ABQABAAIAAAATAB8ABQABAAIAAAASAB8ABQABAAIAAAARAB8ABQABAAIAAAAQAB8ABQABAAIAAAAPAB8ABQABAAIAAAAOAB8ABQABAAIAAAANAB8ABQABAAIAAAAgABkABQABAAAAAAAgABoABQABAAEAAAAhABkABQABAAAAAAAhABoABQABAAEAAAAiABkABQABAAAAAAAiABoABQABAAEAAAAjABkABQABAAAAAAAjABoABQABAAEAAAAkABkABQABAAAAAAAkABoABQABAAEAAAAlABkABQABAAAAAAAlABoABQABAAEAAAAmABkABQABAAAAAAAmABoABQABAAEAAAAnABkABQABAAAAAAAnABoABQABAAEAAAAoABkABQABAAAAAAAoABoABQABAAEAAAApABkABQABAAAAAAApABoABQABAAEAAAAqABkABQABAAAAAAAqABoABQABAAEAAAArABkABQABAAAAAAArABoABQABAAEAAAAsABkABQABAAAAAAAsABoABQABAAEAAAAtABkABQABAAAAAAAtABoABQABAAEAAAAuABkABQABAAAAAAAuABoABQABAAEAAAAvABkABQABAAAAAAAvABoABQABAAEAAAAwABkABQABAAAAAAAwABoABQABAAEAAAAxABkABQABAAAAAAAxABoABQABAAEAAAAyABkABQABAAAAAAAyABoABQABAAEAAAAzABkABQABAAAAAAAzABoABQABAAEAAAA0ABkABQABAAAAAAA0ABoABQABAAEAAAA1ABkABQABAAAAAAA1ABoABQABAAEAAAA2ABkABQABAAAAAAA2ABoABQABAAEAAAA3ABkABQABAAAAAAA3ABoABQABAAEAAAA4ABkABQABAAAAAAA4ABoABQABAAEAAAA5ABkABQABAAAAAAA5ABoABQABAAEAAAA6ABkABQABAAAAAAA6ABoABQABAAEAAAAjABsABQABAAIAAAAkABsABQABAAIAAAAlABsABQABAAIAAAAmABsABQABAAIAAAAnABsABQABAAIAAAAoABsABQABAAIAAAApABsABQABAAIAAAAqABsABQABAAIAAAArABsABQABAAIAAAAsABsABQABAAIAAAAtABsABQABAAIAAAAuABsABQABAAIAAAAvABsABQABAAIAAAAwABsABQABAAIAAAAxABsABQABAAIAAAAyABsABQABAAIAAAAzABsABQABAAIAAAA0ABsABQABAAIAAAA1ABsABQABAAIAAAA2ABsABQABAAIAAAA3ABsABQABAAIAAAA4ABsABQABAAIAAAA5ABsABQABAAIAAAA6ABsABQABAAIAAAA=")
+tile_set = ExtResource("1_37mvc")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="TileMap"]
+
+[node name="Background 2" type="ParallaxLayer" parent="TileMap/ParallaxBackground"]
+texture_filter = 1
+motion_scale = Vector2(0.2, 0.1)
+motion_mirroring = Vector2(1152.58, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground/Background 2"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5lbd2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="TileMap/ParallaxBackground/Background 2"]
+position = Vector2(-10, 200)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_pwu2a")
+texture = SubResource("GradientTexture2D_75liy")
+lifetime = 16.0
+preprocess = 48.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+
+[node name="Background 1" type="ParallaxLayer" parent="TileMap/ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.5)
+motion_mirroring = Vector2(921.6, 0)
+script = ExtResource("3_y04tm")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/ParallaxBackground/Background 1"]
+visible = false
+position = Vector2(280, 140)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("4_s6olx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TileMap/ParallaxBackground/Background 1"]
+position = Vector2(460, 207)
+scale = Vector2(0.48, 0.48)
+sprite_frames = SubResource("SpriteFrames_qej7n")
+
+[node name="movement_text" type="RichTextLabel" parent="."]
+offset_left = 212.0
+offset_top = 363.0
+offset_right = 408.0
+offset_bottom = 412.0
+text = "Press the “WAD\" Keys to move around and jump"
+fit_content = true
+
+[node name="lifeform_text" type="RichTextLabel" parent="."]
+offset_left = 508.0
+offset_top = 275.0
+offset_right = 755.0
+offset_bottom = 369.0
+text = "This is a Lifeform. They give out hints for your journey. Interact with them by pressing the \"spacebar\"."
+fit_content = true
+
+[node name="player" parent="." instance=ExtResource("6_pma55")]
+position = Vector2(295, 446)
+allowed_instruments = Array[String](["violin"])
+allowed_notes = Array[String](["1", "3", "5", "6"])
+
+[node name="OnscreenKeyboard" parent="player" instance=ExtResource("7_gjfwi")]
+visible = false
+level = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="player/OnscreenKeyboard"]
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="player/OnscreenKeyboard/CanvasLayer"]
+material = SubResource("ShaderMaterial_xp43w")
+mesh = SubResource("QuadMesh_7fy0k")
+
+[node name="Mover" parent="." node_paths=PackedStringArray("lifeform", "dest_for_decreasing", "dest_for_increasing") instance=ExtResource("10_2u0h3")]
+position = Vector2(891, 366)
+lifeform = NodePath("Lifeform")
+dest_for_decreasing = NodePath("decreasing")
+dest_for_increasing = NodePath("increasing")
+
+[node name="Lifeform" parent="Mover" instance=ExtResource("6_4ndgs")]
+position = Vector2(-274, 16)
+song_list = Array[String](["piano_3"])
+notes_selection = Array[String](["3"])
+
+[node name="decreasing" type="Node2D" parent="Mover"]
+position = Vector2(-461.758, 68.4808)
+
+[node name="increasing" type="Node2D" parent="Mover"]
+position = Vector2(-96, 11)

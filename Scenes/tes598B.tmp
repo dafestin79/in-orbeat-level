@@ -1,0 +1,201 @@
+[gd_scene load_steps=14 format=4 uid="uid://cj72s0jxrbj6v"]
+
+[ext_resource type="PackedScene" uid="uid://cjyf3dk4bye4q" path="res://Scenes/player.tscn" id="1_3u1c2"]
+[ext_resource type="TileSet" uid="uid://bl2o7yp2wf0hx" path="res://Assets/tilemap.tres" id="1_qlsst"]
+[ext_resource type="Script" path="res://Scripts/music_node.gd" id="2_gnpmi"]
+[ext_resource type="Texture2D" uid="uid://diusx406ladht" path="res://Assets/music-notes-glyph-style-set.png" id="3_dhgg8"]
+[ext_resource type="Texture2D" uid="uid://uqqj0c6wya6r" path="res://Assets/music note.svg" id="3_ka186"]
+[ext_resource type="Script" path="res://Scripts/instrument_node.gd" id="4_lbjbj"]
+[ext_resource type="Script" path="res://Scripts/sample_interactable.gd" id="5_dq177"]
+[ext_resource type="PackedScene" uid="uid://c44tohe5obyy" path="res://Scenes/gate.tscn" id="8_ptjbk"]
+[ext_resource type="PackedScene" uid="uid://bw1n4k65t1ui5" path="res://Scenes/moving_platform.tscn" id="8_rshn3"]
+[ext_resource type="Script" path="res://Scripts/puzzle_2.gd" id="8_tn8h7"]
+[ext_resource type="PackedScene" uid="uid://qkjd7gmxk5n7" path="res://Scenes/switch.tscn" id="9_4ifvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lcuh"]
+size = Vector2(70, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpbrx"]
+radius = 50.0
+
+[node name="TestScene" type="Node2D"]
+position = Vector2(20, 24)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-3, -2)
+tile_map_data = PackedByteArray("AAAmAAQAAAABAAEAAAAnAAQAAAACAAEAAAAoAAQAAAADAAEAAAAmAAUAAAABAAEAAAAnAAUAAAACAAEAAAAoAAUAAAADAAEAAAApAAUAAAABAAEAAAAqAAUAAAACAAEAAAArAAUAAAADAAEAAAApAAQAAAABAAEAAAAqAAQAAAACAAEAAAArAAQAAAADAAEAAAAYACQAAAACAAEAAAAZACQAAAACAAEAAAAaACQAAAACAAEAAAAbACQAAAACAAEAAAAcACQAAAACAAEAAAAdACQAAAACAAEAAAAeACQAAAACAAEAAAAfACQAAAACAAEAAAAgACQAAAACAAEAAAAhACQAAAACAAEAAAAiACQAAAACAAEAAAAjACQAAAACAAEAAAAkACQAAAACAAEAAAAlACQAAAACAAEAAAAmACQAAAACAAEAAAAnACQAAAACAAEAAAAoACQAAAACAAEAAAApACQAAAACAAEAAAAqACQAAAACAAEAAAArACQAAAACAAEAAAAsACQAAAACAAEAAAAtACQAAAACAAEAAAAuACQAAAACAAEAAAAvACQAAAACAAEAAAAwACQAAAACAAEAAAAxACQAAAACAAEAAAAyACQAAAACAAEAAAAzACQAAAACAAEAAAA0ACQAAAACAAEAAAA1ACQAAAACAAEAAAA2ACQAAAACAAEAAAA3ACQAAAACAAEAAAA4ACQAAAACAAEAAAA5ACQAAAACAAEAAAA6ACQAAAACAAEAAAA7ACQAAAACAAEAAAA8ACQAAAACAAEAAAA9ACQAAAACAAEAAAA+ACQAAAACAAEAAAA/ACQAAAACAAEAAABAACQAAAACAAEAAABBACQAAAACAAEAAABCACQAAAACAAEAAABDACQAAAACAAEAAABEACQAAAACAAEAAABFACQAAAACAAEAAABGACQAAAABAAEAAABGACMAAAABAAIAAABGACIAAAABAAIAAABGACEAAAABAAIAAABGACAAAAABAAIAAABGAB8AAAABAAIAAABGAB4AAAABAAIAAABGAB0AAAABAAIAAABGABwAAAABAAIAAABGABsAAAABAAIAAABGABoAAAABAAIAAABGABkAAAABAAIAAABGABgAAAABAAIAAABGABcAAAABAAIAAABGABYAAAABAAIAAABGABUAAAABAAIAAABGABQAAAABAAIAAABGABMAAAABAAIAAABGABIAAAABAAIAAABGABEAAAABAAIAAABGABAAAAABAAIAAABGAA8AAAABAAIAAABGAA4AAAABAAIAAABGAA0AAAABAAIAAABGAAwAAAABAAIAAABGAAsAAAABAAIAAABGAAoAAAABAAIAAABGAAkAAAABAAIAAABGAAgAAAABAAIAAABGAAcAAAABAAIAAABGAAYAAAABAAIAAABGAAUAAAABAAIAAAAXACQAAAADAAEAAAAZACAAAAACAAEAAAAaACAAAAACAAEAAAAbACAAAAACAAEAAAAcACAAAAACAAEAAAAdACAAAAACAAEAAAAeACAAAAACAAEAAAAfACAAAAACAAEAAAAgACAAAAACAAEAAAAhACAAAAACAAEAAAAiACAAAAACAAEAAAAjACAAAAACAAEAAAAkACAAAAACAAEAAAAlACAAAAACAAEAAAAmACAAAAACAAEAAAAnACAAAAACAAEAAAAoACAAAAACAAEAAAApACAAAAACAAEAAAAqACAAAAACAAEAAAArACAAAAACAAEAAAAsACAAAAACAAEAAAAtACAAAAACAAEAAAAuACAAAAACAAEAAAAvACAAAAACAAEAAAAwACAAAAACAAEAAAAxACAAAAACAAEAAAAyACAAAAACAAEAAAAzACAAAAACAAEAAAA0ACAAAAACAAEAAAA1ACAAAAACAAEAAAA2ACAAAAADAAIAAAA3AAYAAAADAAIAAAA3AAcAAAADAAIAAAA3AAgAAAADAAIAAAA3AAkAAAADAAIAAAA3AAoAAAADAAIAAAA3AAsAAAADAAIAAAA3AAwAAAADAAIAAAA3AA0AAAADAAIAAAA3AA4AAAADAAIAAAA3AA8AAAADAAIAAAA3ABAAAAADAAIAAAA3ABEAAAADAAIAAAA3ABIAAAADAAIAAAA3ABMAAAADAAIAAAA3ABQAAAADAAIAAAA3ABUAAAADAAIAAAA3ABYAAAADAAIAAAA3ABcAAAADAAIAAAA3ABgAAAADAAIAAAA3ABkAAAADAAIAAAA3ABoAAAADAAIAAAA3ABsAAAADAAIAAAA3ABwAAAADAAIAAAA3AB0AAAADAAIAAAA3ACAAAAADAAIAAAAnAB0AAAABAAUAAAAoAB0AAAACAAUAAAAeAB0AAAABAAUAAAAfAB0AAAACAAUAAAAgAB0AAAACAAUAAAAhAB0AAAACAAUAAAAiAB0AAAADAAUAAAApAB0AAAACAAUAAAAqAB0AAAACAAUAAAArAB0AAAADAAUAAAA2AB0AAAABAAIAAAA2ABwAAAABAAIAAAA2ABsAAAABAAIAAAA2ABoAAAABAAIAAAA2ABkAAAABAAIAAAA2ABgAAAABAAIAAAA2ABcAAAABAAIAAAA2ABYAAAABAAIAAAA2ABUAAAABAAIAAAA2ABQAAAABAAIAAAA2ABMAAAABAAIAAAA2ABIAAAABAAIAAAA2ABEAAAABAAIAAAA2ABAAAAABAAIAAAA2AA8AAAABAAIAAAA2AA4AAAABAAIAAAA2AA0AAAABAAIAAAA2AAwAAAABAAIAAAA2AAsAAAABAAIAAAA2AAoAAAABAAIAAAA2AAgAAAABAAIAAAA2AAcAAAABAAIAAAA2AAYAAAABAAIAAAA2AAkAAAABAAIAAAAYABkAAAADAAIAAAAYABoAAAADAAIAAAAYABsAAAADAAIAAAAYABwAAAADAAIAAAAYAB0AAAADAAIAAAAYAB4AAAADAAIAAAAYAB8AAAADAAIAAAAYACAAAAADAAEAAAAmAAYAAAABAAIAAAAmAAcAAAABAAIAAAAmAAgAAAABAAIAAAAmAAkAAAABAAIAAAAmAAoAAAABAAIAAAAmAAsAAAABAAIAAAAmAAwAAAABAAIAAAAmAA0AAAABAAIAAAAmAA4AAAACAAEAAAAAAA4AAAACAAEAAAABAA4AAAACAAEAAAACAA4AAAACAAEAAAADAA4AAAACAAEAAAAEAA4AAAACAAEAAAAFAA4AAAACAAEAAAAGAA4AAAACAAEAAAAHAA4AAAACAAEAAAAIAA4AAAACAAEAAAAJAA4AAAACAAEAAAAKAA4AAAACAAEAAAALAA4AAAACAAEAAAAMAA4AAAACAAEAAAANAA4AAAACAAEAAAD//wgAAAADAAIAAAD//wkAAAADAAIAAAD//woAAAADAAIAAAD//wsAAAADAAIAAAD//wwAAAADAAIAAAD//w0AAAADAAIAAAD//w4AAAACAAEAAAAOAA4AAAACAAEAAAAPAA4AAAACAAEAAAAQAA4AAAACAAEAAAARAA4AAAACAAEAAAASAA4AAAACAAEAAAATAA4AAAACAAEAAAAUAA4AAAACAAEAAAAVAA4AAAACAAEAAAAWAA4AAAACAAEAAAAXAA4AAAACAAEAAAAYAA4AAAACAAEAAAAZAA4AAAACAAEAAAAaAA4AAAACAAEAAAAbAA4AAAACAAEAAAAcAA4AAAACAAEAAAAdAA4AAAACAAEAAAAeAA4AAAACAAEAAAAfAA4AAAACAAEAAAAgAA4AAAACAAEAAAAhAA4AAAACAAEAAAAiAA4AAAACAAEAAAAjAA4AAAACAAEAAAAkAA4AAAACAAEAAAAlAA4AAAACAAEAAAAGAAwAAAAFAAEAAAAGAA0AAAAIAAEAAAAHAAwAAAACAAEAAAAHAA0AAAAJAAEAAAAIAAwAAAACAAEAAAAIAA0AAAAIAAEAAAAJAAwAAAACAAEAAAAJAA0AAAAJAAEAAAAKAAwAAAACAAEAAAAKAA0AAAAIAAEAAAALAAwAAAACAAEAAAALAA0AAAAJAAEAAAAMAAwAAAACAAEAAAAMAA0AAAAIAAEAAAANAAwAAAACAAEAAAANAA0AAAAJAAEAAAAOAAwAAAACAAEAAAAOAA0AAAAIAAEAAAAPAAwAAAACAAEAAAAPAA0AAAAJAAEAAAAFAA0AAAAFAAEAAAA=")
+tile_set = ExtResource("1_qlsst")
+
+[node name="SampleInteractable" type="Node2D" parent="."]
+position = Vector2(39, 194)
+script = ExtResource("5_dq177")
+
+[node name="Sprite2D" type="Sprite2D" parent="SampleInteractable"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("3_dhgg8")
+
+[node name="Area2D" type="Area2D" parent="SampleInteractable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SampleInteractable/Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_2lcuh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("1_3u1c2")]
+position = Vector2(286, 40)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="MusicNode" type="Node2D" parent="Player"]
+script = ExtResource("2_gnpmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/MusicNode"]
+visible = false
+position = Vector2(0, -25)
+texture = ExtResource("3_ka186")
+
+[node name="Area2D" type="Area2D" parent="Player/MusicNode"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MusicNode/Area2D"]
+shape = SubResource("CircleShape2D_mpbrx")
+disabled = true
+
+[node name="Timer" type="Timer" parent="Player/MusicNode"]
+one_shot = true
+
+[node name="InstrumentNode" type="Node2D" parent="Player"]
+visible = false
+script = ExtResource("4_lbjbj")
+
+[node name="Control" type="Control" parent="Player/InstrumentNode"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 118.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Guitar" type="Button" parent="Player/InstrumentNode/Control"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 46.0
+offset_right = 85.0
+offset_bottom = 77.0
+text = "Guitar"
+
+[node name="Piano" type="Button" parent="Player/InstrumentNode/Control"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 46.0
+offset_right = 141.0
+offset_bottom = 77.0
+text = "Piano"
+
+[node name="Puzzle1" type="Node2D" parent="."]
+position = Vector2(381, 59)
+
+[node name="switch" parent="Puzzle1" instance=ExtResource("9_4ifvk")]
+position = Vector2(-215, 114)
+
+[node name="moving_platform" parent="Puzzle1" instance=ExtResource("8_rshn3")]
+position = Vector2(-163, 3)
+offset = Vector2(0, 120)
+is_ledge = true
+
+[node name="switch2" parent="Puzzle1/moving_platform" instance=ExtResource("9_4ifvk")]
+position = Vector2(46, -17)
+
+[node name="moving_platform2" parent="Puzzle1" instance=ExtResource("8_rshn3")]
+position = Vector2(-66, 3)
+offset = Vector2(0, 90)
+is_ledge = true
+
+[node name="switch3" parent="Puzzle1/moving_platform2" instance=ExtResource("9_4ifvk")]
+position = Vector2(52, -16)
+
+[node name="moving_platform3" parent="Puzzle1" instance=ExtResource("8_rshn3")]
+position = Vector2(32, 3)
+offset = Vector2(0, 60)
+is_ledge = true
+
+[node name="switch4" parent="Puzzle1/moving_platform3" instance=ExtResource("9_4ifvk")]
+position = Vector2(38, -18)
+
+[node name="moving_platform4" parent="Puzzle1" instance=ExtResource("8_rshn3")]
+position = Vector2(129, 3)
+offset = Vector2(0, 30)
+is_ledge = true
+
+[node name="Puzzle2" type="Node2D" parent="."]
+position = Vector2(412, 397)
+script = ExtResource("8_tn8h7")
+switch_order = Array[String](["1", "2", "3", "4", "5"])
+
+[node name="Gate" parent="Puzzle2" instance=ExtResource("8_ptjbk")]
+position = Vector2(457, 81)
+
+[node name="switch1" parent="Puzzle2" instance=ExtResource("9_4ifvk")]
+position = Vector2(27, 96)
+is_one_time = true
+switch_name = "1"
+
+[node name="switch2" parent="Puzzle2" instance=ExtResource("9_4ifvk")]
+position = Vector2(170, 97)
+is_one_time = true
+switch_name = "2"
+
+[node name="switch3" parent="Puzzle2" instance=ExtResource("9_4ifvk")]
+position = Vector2(330, 97)
+is_one_time = true
+switch_name = "3"
+
+[node name="switch4" parent="Puzzle2" instance=ExtResource("9_4ifvk")]
+position = Vector2(241, 48)
+is_one_time = true
+switch_name = "4"
+
+[node name="switch5" parent="Puzzle2" instance=ExtResource("9_4ifvk")]
+position = Vector2(97, 48)
+is_one_time = true
+switch_name = "5"
+
+[node name="Puzzle3" type="Node2D" parent="."]
+position = Vector2(986, 531)
+
+[node name="moving_platform" parent="Puzzle3" instance=ExtResource("8_rshn3")]
+position = Vector2(34, 0)
+
+[node name="switch" parent="Puzzle3/moving_platform" instance=ExtResource("9_4ifvk")]
+position = Vector2(77, -17)
+
+[node name="moving_platform2" parent="Puzzle3" instance=ExtResource("8_rshn3")]
+position = Vector2(-89, -204)
+
+[node name="switch" parent="Puzzle3/moving_platform2" instance=ExtResource("9_4ifvk")]
+position = Vector2(4, -16)
+
+[connection signal="area_entered" from="Player/MusicNode/Area2D" to="SampleInteractable" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/MusicNode/Area2D" to="SampleInteractable" method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Player/MusicNode/Timer" to="Player/MusicNode" method="_on_timer_timeout"]
+[connection signal="pressed" from="Player/InstrumentNode/Control/Guitar" to="SampleInteractable" method="_on_guitar_pressed"]
+[connection signal="pressed" from="Player/InstrumentNode/Control/Guitar" to="Player/InstrumentNode" method="_on_guitar_pressed"]
+[connection signal="pressed" from="Player/InstrumentNode/Control/Piano" to="SampleInteractable" method="_on_piano_pressed"]
+[connection signal="pressed" from="Player/InstrumentNode/Control/Piano" to="Player/InstrumentNode" method="_on_piano_pressed"]
+[connection signal="switch_on" from="Puzzle1/switch" to="Puzzle1/moving_platform" method="_on_switch_switch_on"]
+[connection signal="switch_on" from="Puzzle1/moving_platform/switch2" to="Puzzle1/moving_platform2" method="_on_switch_2_switch_on"]
+[connection signal="switch_on" from="Puzzle1/moving_platform2/switch3" to="Puzzle1/moving_platform3" method="_on_switch_3_switch_on"]
+[connection signal="switch_on" from="Puzzle1/moving_platform3/switch4" to="Puzzle1/moving_platform4" method="_on_switch_4_switch_on"]
+[connection signal="switch_on" from="Puzzle2/switch1" to="Puzzle2" method="_on_switch_1_switch_on"]
+[connection signal="switch_on" from="Puzzle2/switch2" to="Puzzle2" method="_on_switch_2_switch_on"]
+[connection signal="switch_on" from="Puzzle2/switch3" to="Puzzle2" method="_on_switch_3_switch_on"]
+[connection signal="switch_on" from="Puzzle2/switch4" to="Puzzle2" method="_on_switch_4_switch_on"]
+[connection signal="switch_on" from="Puzzle2/switch5" to="Puzzle2" method="_on_switch_5_switch_on"]
+[connection signal="switch_on" from="Puzzle3/moving_platform/switch" to="Puzzle3/moving_platform" method="_on_switch_switch_on"]
+[connection signal="switch_on" from="Puzzle3/moving_platform2/switch" to="Puzzle3/moving_platform2" method="_on_switch_switch_on"]
