@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://lbjnt2i8roa0"]
+[gd_scene load_steps=36 format=4 uid="uid://lbjnt2i8roa0"]
 
 [ext_resource type="PackedScene" uid="uid://cwsju60qeuywn" path="res://Scenes/pause-menu.tscn" id="1_fdnf0"]
 [ext_resource type="TileSet" uid="uid://bl2o7yp2wf0hx" path="res://Assets/tilemap.tres" id="2_xcj7k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpnfpft461iwv" path="res://Scenes/gate.tscn" id="7_28yyb"]
 [ext_resource type="PackedScene" uid="uid://c54iwrw1m1gi" path="res://Scenes/lifeform.tscn" id="8_875uj"]
 [ext_resource type="PackedScene" uid="uid://qkjd7gmxk5n7" path="res://Scenes/switch.tscn" id="9_fvdwk"]
+[ext_resource type="PackedScene" uid="uid://d4ibfvrqimumk" path="res://Scenes/mover.tscn" id="10_fdnf0"]
 [ext_resource type="PackedScene" uid="uid://cjyf3dk4bye4q" path="res://Scenes/player.tscn" id="11_fd8gt"]
 [ext_resource type="PackedScene" uid="uid://ecyf5hd6bip2" path="res://Scenes/onscreen_keyboard.tscn" id="12_mxi2s"]
 [ext_resource type="Shader" uid="uid://wqjgt66l3va8" path="res://Assets/Shader/crt.gdshader" id="13_b1wka"]
@@ -205,49 +206,70 @@ sprite_frames = SubResource("SpriteFrames_8nek2")
 frame_progress = 0.79224
 
 [node name="MusicComet" parent="." instance=ExtResource("6_4jl0u")]
-visible = false
-position = Vector2(910, 513)
+position = Vector2(1210, 480)
 notes_list = Array[String](["piano_1", "piano_3", "piano_5"])
 next_scene_path = "res://Scenes/level_2.tscn"
 is_randomized = true
 
-[node name="Gates" type="Node2D" parent="."]
-visible = false
-position = Vector2(518.071, 493.564)
+[node name="Gate 1" type="Node" parent="."]
 
-[node name="Gate" parent="Gates" node_paths=PackedStringArray("needed_vertices", "lifeform") instance=ExtResource("7_28yyb")]
-position = Vector2(33.929, 2.5)
-needed_vertices = [NodePath("../../Vertices/switch")]
-lifeform = NodePath("../../Lifeforms/Lifeform")
+[node name="Lifeform" parent="Gate 1" instance=ExtResource("8_875uj")]
+position = Vector2(1121, 207)
+song_list = Array[String](["violin_5"])
+instruments_selection = Array[String](["violin"])
+notes_selection = Array[String](["1", "3", "5", "6", "8", "10", "12"])
+is_lifeform_for_vertice = true
+
+[node name="Switch" parent="Gate 1" instance=ExtResource("9_fvdwk")]
+position = Vector2(1171, 208)
+trigger_keys = Array[String](["violin_3", "violin_5"])
+notes_selection = Array[String](["1", "3", "5", "6", "8", "10", "12"])
+
+[node name="Gate" parent="Gate 1" node_paths=PackedStringArray("needed_vertices", "lifeform") instance=ExtResource("7_28yyb")]
+position = Vector2(1216, 256)
+rotation = -1.5708
+scale = Vector2(2, 2)
+needed_vertices = [NodePath("../Switch")]
+lifeform = NodePath("../Lifeform")
+
+[node name="Mover" parent="." node_paths=PackedStringArray("lifeform", "dest_for_decreasing", "dest_for_increasing") instance=ExtResource("10_fdnf0")]
+position = Vector2(1123, 336)
+lifeform = NodePath("Lifeform")
+dest_for_decreasing = NodePath("DecDest")
+dest_for_increasing = NodePath("IncDest")
+
+[node name="Lifeform" parent="Mover" instance=ExtResource("8_875uj")]
+position = Vector2(87, 15)
+song_list = Array[String](["piano_12"])
+instruments_selection = Array[String](["piano", "violin"])
+notes_selection = Array[String](["3", "5", "6", "8", "10"])
+is_lifeform_for_vertice = true
+
+[node name="IncDest" type="Node2D" parent="Mover"]
+position = Vector2(-139, -135)
+
+[node name="DecDest" type="Node2D" parent="Mover"]
+position = Vector2(-104, 5)
+
+[node name="Gates" type="Node2D" parent="."]
+position = Vector2(518.071, 493.564)
 
 [node name="Gate2" parent="Gates" node_paths=PackedStringArray("needed_vertices", "lifeform") instance=ExtResource("7_28yyb")]
 position = Vector2(178.929, 2.5)
-needed_vertices = [NodePath("../../Vertices/switch"), NodePath("../../Vertices/switch3")]
-lifeform = NodePath("../../Lifeforms/Lifeform2")
+needed_vertices = [NodePath("../../Gate 1/Switch"), NodePath("../../Vertices/switch3")]
+lifeform = NodePath("../../Mover/Lifeform")
 
 [node name="Gate3" parent="Gates" node_paths=PackedStringArray("needed_vertices", "lifeform") instance=ExtResource("7_28yyb")]
 position = Vector2(317.929, 2.5)
-needed_vertices = [NodePath("../../Vertices/switch"), NodePath("../../Vertices/switch2"), NodePath("../../Vertices/switch3")]
+needed_vertices = [NodePath("../../Gate 1/Switch"), NodePath("../../Vertices/switch2"), NodePath("../../Vertices/switch3")]
 lifeform = NodePath("../../Lifeforms/Lifeform3")
 
 [node name="Gate4" parent="Gates" node_paths=PackedStringArray("needed_vertices", "lifeform") instance=ExtResource("7_28yyb")]
 position = Vector2(-242.071, 2.5)
-needed_vertices = [NodePath("../../Vertices/switch"), NodePath("../../Vertices/switch2")]
+needed_vertices = [NodePath("../../Gate 1/Switch"), NodePath("../../Vertices/switch2")]
 lifeform = NodePath("../../Lifeforms/Lifeform4")
 
 [node name="Lifeforms" type="Node2D" parent="."]
-visible = false
-
-[node name="Lifeform" parent="Lifeforms" instance=ExtResource("8_875uj")]
-position = Vector2(554, 447)
-song_list = Array[String](["piano_1"])
-is_lifeform_for_vertice = true
-
-[node name="Lifeform2" parent="Lifeforms" instance=ExtResource("8_875uj")]
-position = Vector2(699, 447)
-song_list = Array[String](["piano_1", "piano_3"])
-num_songs = 2
-is_lifeform_for_vertice = true
 
 [node name="Lifeform3" parent="Lifeforms" instance=ExtResource("8_875uj")]
 position = Vector2(837, 447)
@@ -262,13 +284,7 @@ num_songs = 2
 is_lifeform_for_vertice = true
 
 [node name="Vertices" type="Node2D" parent="."]
-visible = false
 position = Vector2(221, 432)
-
-[node name="switch" parent="Vertices" instance=ExtResource("9_fvdwk")]
-position = Vector2(179, 16)
-trigger_keys = Array[String](["piano_1", "piano_3"])
-notes_selection = Array[String](["1", "3", "5"])
 
 [node name="switch2" parent="Vertices" instance=ExtResource("9_fvdwk")]
 position = Vector2(99, 16)
@@ -282,8 +298,8 @@ notes_selection = Array[String](["1", "3", "5"])
 
 [node name="player" parent="." instance=ExtResource("11_fd8gt")]
 position = Vector2(983, 209)
-allowed_instruments = Array[String](["piano"])
-allowed_notes = Array[String](["1", "3", "5"])
+allowed_instruments = Array[String](["piano", "violin"])
+allowed_notes = Array[String](["1", "3", "5", "6", "8", "10", "12"])
 level = 1
 
 [node name="OnscreenKeyboard" parent="player" instance=ExtResource("12_mxi2s")]
