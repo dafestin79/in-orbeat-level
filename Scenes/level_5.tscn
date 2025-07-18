@@ -421,7 +421,7 @@ notes_selection = Array[String](["1", "3", "5", "6", "8", "10", "12"])
 position = Vector2(1174, 609)
 notes_list = Array[String](["piano_1", "violin_5", "piano_3", "violin_8", "violin_12"])
 num_notes_to_play = 5
-next_scene_path = "res://Scenes/main_menu.tscn"
+next_scene_path = "res://Scenes/level_6.tscn"
 
 [node name="Sparkle" parent="." instance=ExtResource("14_x4rh5")]
 position = Vector2(924, 605)
