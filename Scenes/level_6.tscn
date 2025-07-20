@@ -285,10 +285,10 @@ position = Vector2(87, 15)
 song_list = Array[String](["piano_10"])
 notes_selection = Array[String](["3", "5", "6", "8", "10"])
 
-[node name="DecDest" type="Node2D" parent="Movers/Mover"]
+[node name="IncDest" type="Node2D" parent="Movers/Mover"]
 position = Vector2(-344, 172)
 
-[node name="IncDest" type="Node2D" parent="Movers/Mover"]
+[node name="DecDest" type="Node2D" parent="Movers/Mover"]
 position = Vector2(-104, 5)
 
 [node name="Mover2" parent="Movers" node_paths=PackedStringArray("lifeform", "dest_for_decreasing", "dest_for_increasing") instance=ExtResource("10_fdnf0")]
