@@ -324,12 +324,13 @@ position = Vector2(384, -118)
 
 [node name="MusicComet" parent="." instance=ExtResource("6_4jl0u")]
 position = Vector2(1199, 593)
-notes_list = Array[String](["piano_1", "piano_3", "piano_5"])
+notes_list = Array[String](["piano_1", "violin_3", "piano_5", "piano_6", "violin_10"])
+num_notes_to_play = 5
 next_scene_path = "res://Scenes/main_menu.tscn"
 is_randomized = true
 
 [node name="player" parent="." instance=ExtResource("11_fd8gt")]
-position = Vector2(1043, 322)
+position = Vector2(1153, 581)
 allowed_instruments = Array[String](["violin", "piano"])
 allowed_notes = Array[String](["1", "3", "5", "6", "8", "10", "12"])
 level = 1
